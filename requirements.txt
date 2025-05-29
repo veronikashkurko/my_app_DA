@@ -1,0 +1,13 @@
+streamlit
+pandas
+matplotlib
+seaborn
+altair
+numpy
+plotly
+scikit-learn
+openpyxl
+streamlit-extras
+streamlit-elements
+streamlit-shadcn-ui
+sklearn
