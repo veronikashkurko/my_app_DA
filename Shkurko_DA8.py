@@ -67,6 +67,15 @@ chart_option = st.sidebar.radio(
     ]
 )
 
+# Фільтрація
+
+df_filtered = df[
+    (df["Year"] == selected_year) &
+    (df["Region"].isin(selected_region)) &
+    (df["Country Name"].isin(selected_сountry)) &
+    (df["Population"] <= selected_max_population)
+]
+
 st.sidebar.markdown("Побудова регресії")
 numeric_columns = df_filtered.select_dtypes(include=np.number).columns.tolist()
 
