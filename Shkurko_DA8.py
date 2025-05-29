@@ -153,8 +153,8 @@ if show_map:
 if chart_option == "Експорт країни vs Імпорт":
     st.subheader("📊 Експорт країни vs Імпорт")
     chart = alt.Chart(df_filtered).mark_circle(size=60).encode(
-        x='Export',
-        y='Import',
+        x='Exports',
+        y='Imports',
         color='Region:N',
         tooltip=['Country Name', 'Exports', 'Imports', 'Region']
     ).interactive().properties(title="Експорт країни vs Імпорт")
@@ -171,9 +171,9 @@ elif chart_option == "Scatter: ВВП vs Експорт":
     st.subheader("📊 Scatter: ВВП vs Експорт")
     chart = alt.Chart(df_filtered).mark_circle(size=60).encode(
         x='GDP',
-        y='Export',
+        y='Exports',
         color='Region',
-        tooltip=['Country Name', 'GDP', 'Export']
+        tooltip=['Country Name', 'GDP', 'Exports']
     ).interactive().properties(title="ВВП vs Експорт")
     st.altair_chart(chart, use_container_width=True)
 
