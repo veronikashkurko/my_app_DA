@@ -7,6 +7,16 @@ Original file is located at
     https://colab.research.google.com/drive/1VlnQt9GJg2DuJqAGAoIFTebX6nC7hNK-
 """
 
+#завантажимо необхідні бібліотеки
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import altair as alt
+import numpy as np
+import plotly.express as px
+from sklearn.linear_model import LinearRegression
+
 df = pd.read_csv('data.csv')
 
 df.info()
