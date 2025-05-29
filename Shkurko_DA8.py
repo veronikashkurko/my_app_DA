@@ -181,7 +181,7 @@ elif chart_option == "Теплова карта кореляцій":
     st.subheader("📊 Теплова карта кореляцій")
     numeric_cols = df_filtered.select_dtypes(include=[np.number])
     corr = numeric_cols.corr()
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(7, 5))
     sns.heatmap(corr, annot=True, cmap='coolwarm', fmt=".2f", ax=ax)
     ax.set_title("Кореляційна матриця числових показників")
     st.pyplot(fig)
