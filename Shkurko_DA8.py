@@ -67,6 +67,14 @@ chart_option = st.sidebar.radio(
     ]
 )
 
+st.sidebar.markdown("Побудова регресії")
+numeric_columns = df_filtered.select_dtypes(include=np.number).columns.tolist()
+
+reg_x = st.sidebar.selectbox("Оберіть змінну X", numeric_columns, index=0)
+reg_y = st.sidebar.selectbox("Оберіть змінну Y", numeric_columns, index=1)
+show_regression = st.sidebar.checkbox("Показати регресійну модель")
+
+
 # Інформаційний блок
 st.sidebar.markdown("---")
 st.sidebar.markdown(" **Інструкція**: \nВ даній роботі надано інформацію щодо кількості населення, ВВП , експорту та імпорту 15 країн світу. Для аналізу фільтруйте дані за параметрами і переглядайте графіки та таблиці на панелі праворуч.")
@@ -81,12 +89,6 @@ df_filtered = df[
     (df["Population"] <= selected_max_population)
 ]
 
-st.sidebar.markdown("Побудова регресії")
-numeric_columns = df_filtered.select_dtypes(include=np.number).columns.tolist()
-
-reg_x = st.sidebar.selectbox("Оберіть змінну X", numeric_columns, index=0)
-reg_y = st.sidebar.selectbox("Оберіть змінну Y", numeric_columns, index=1)
-show_regression = st.sidebar.checkbox("Показати регресійну модель")
 
 # Основна панель
 
@@ -142,8 +144,8 @@ if show_map:
 if chart_option == "Експорт країни vs Імпорт":
     st.subheader("📊 Експорт країни vs Імпорт")
     chart = alt.Chart(df_filtered).mark_circle(size=60).encode(
-        x='Export:Q',
-        y='Import:Q',
+        x='Export',
+        y='Import',
         color='Region:N',
         tooltip=['Country Name', 'Exports', 'Imports', 'Region']
     ).interactive().properties(title="Експорт країни vs Імпорт")
@@ -159,9 +161,9 @@ elif chart_option == "Boxplot кількості населення по рег�
 elif chart_option == "Scatter: ВВП vs Експорт":
     st.subheader("📊 Scatter: ВВП vs Експорт")
     chart = alt.Chart(df_filtered).mark_circle(size=60).encode(
-        x='GDP:Q',
-        y='Export:Q',
-        color='Region:N',
+        x='GDP',
+        y='Export',
+        color='Region',
         tooltip=['Country Name', 'GDP', 'Export']
     ).interactive().properties(title="ВВП vs Експорт")
     st.altair_chart(chart, use_container_width=True)
